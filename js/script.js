@@ -174,3 +174,13 @@ const myFavoriteFootballTeam = {
  },
 ]
 };
+
+//Se le indica al objecto por medio del metodo Object.freeze(obj) que su propiedades no se pueden agregan o modificar
+
+Object.freeze(myFavoriteFootballTeam);
+
+//Accediendo a unos valores de la matriz con notacion de puntos
+const sport = myFavoriteFootballTeam.sport;
+const team = myFavoriteFootballTeam.team;
+
+//Accediendo a unos valores de la matriz con destructuring syntax
