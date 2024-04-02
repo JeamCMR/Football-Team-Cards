@@ -204,15 +204,16 @@ const setPlayerCards = (arr=players) =>{ //Se agrega un argumento por defecto qu
     /* el metodo .map recorre cada elemento de un array y genera uno nuevo apartir del este.
     despues le paso el resultado obtenido del callback optenido de .map, el cual tendra
     filtrada la infroamcion dependiendo de lo que solicita el usuario*/
-    playerCards.innerHTML+=arr.map(({name,position,number,isCaptain,nickname})=>{
-        `<div class="player-card">
-        <h2>${name}${isCaptain ? "(Captain)" : ""}</h2>
-        <p>Position: ${position}</p>
-        <p>Number: ${number}</p>
-        <p>Nickname: ${nickname ? nickname : "N/A" }</p>
-        </div> 
-        `;
-    }).join("");
+        playerCards.innerHTML += arr
+        .map(({name,position,number,isCaptain,nickname})=>
+            `<div class="player-card">
+            <h2>${name}${isCaptain ? "(Captain)" : ""}</h2>
+            <p>Position: ${position}</p>
+            <p>Number: ${number}</p>
+            <p>Nickname: ${nickname ? nickname : "N/A" }</p>
+            </div> 
+            ` 
+        ).join("");
 };
 
 
@@ -222,17 +223,20 @@ const setPlayerCards = (arr=players) =>{ //Se agrega un argumento por defecto qu
 playersDropdownList.addEventListener("change",(e)=>{
     //console.log(e.target.value); //representa la propieda de valor del elemento playersDropdownList
     playerCards.innerHTML = ""; //Vacia todo lo que se encuentra dentro del elemento
+ 
     switch (e.target.value){
+        
         case "nickname":
             /*Usamos el metodo filter para crear un nuevo array que cumpla el criterio de filtado, en este caso
              le estoy pasando la funcion setPlayerCards un arrray de players el cual va a filtar por los apodos
              de los jugadores que no sean null. filter crea un nuevo array con el resultado y se lo pasa
             a la funcion setPlayerCards el cual mostara en pantala ese array con los jugadores con apodo*/
-            setPlayerCards(players.filter(player=>player.nickname !== null)); // un funcion con retorno explicito como argumento (criterio de filtrado) argumento => argumento.propiedad (validacion) comparar
+             setPlayerCards(players.filter((player) => player.nickname !== null)); // un funcion con retorno explicito como argumento (criterio de filtrado) argumento => argumento.propiedad (validacion) comparar
         break;
 
         case "forward":
             setPlayerCards(players.filter(player => player.position === "forward"));
+            
         break;
 
         case "midfielder":
@@ -249,6 +253,7 @@ playersDropdownList.addEventListener("change",(e)=>{
 
         default:
             setPlayerCards();
+            break;
     }   
 
 })
