@@ -179,8 +179,38 @@ const myFavoriteFootballTeam = {
 
 Object.freeze(myFavoriteFootballTeam);
 
-//Accediendo a unos valores de la matriz con notacion de puntos
-const sport = myFavoriteFootballTeam.sport;
-const team = myFavoriteFootballTeam.team;
+//Accediendo a unos valores de la matriz con notacion de puntos <-- mas codigo
+// const sport = myFavoriteFootballTeam.sport;
+// const team = myFavoriteFootballTeam.team;
 
-//Accediendo a unos valores de la matriz con destructuring syntax
+//Accediendo a unos valores de la matriz con destructuring syntax <-- Es mejor, menos codigo
+const {sport, team, year, players} = myFavoriteFootballTeam;
+
+const {coachName} = myFavoriteFootballTeam.headCoach;
+
+
+/**Mostrando informacion en el html */
+
+typeOfSport.textContent = sport;
+teamName.textContent = team;
+worldCupYear.textContent = year;
+headCoach.textContent = coachName;
+
+
+/**Funcion para filtrar las tarjetas segun la opcion selecionada del menu desplegable */
+
+const setPlayerCards = (arr=players) =>{ //Se agrega un argumento por defecto que tendra como valor el arrazy de player
+    /* el metodo .map recorre cada elemento de un array y genera uno nuevo apartir del este.
+    despues le paso el resultado obtenido del callback optenido de .map, el cual tendra
+    filtrada la infroamcion dependiendo de lo que solicita el usuario*/
+    playerCards.innerHTML+=arr.map(({name,position,number,isCaptain,nickname})=>{
+        `<div class="player-card">
+        <h2>${name}${isCaptain ? "(Captain)" : ""}</h2>
+        <p>Position: ${position}</p>
+        <p>Number: ${number}</p>
+        <p>Nickname: ${nickname ? nickname : "N/A" }</p>
+        </div> 
+        `;
+    }).join("");
+};
+
