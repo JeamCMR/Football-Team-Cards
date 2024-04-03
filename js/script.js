@@ -198,12 +198,12 @@ worldCupYear.textContent = year;
 headCoach.textContent = coachName;
 
 
-/**Funcion para filtrar las tarjetas segun la opcion selecionada del menu desplegable */
+/**Funcion para  mostar las tarjetas de los jugadores */
 
 const setPlayerCards = (arr=players) =>{ //Se agrega un argumento por defecto que tendra como valor el arrazy de player
     /* el metodo .map recorre cada elemento de un array y genera uno nuevo apartir del este.
-    despues le paso el resultado obtenido del callback optenido de .map, el cual tendra
-    filtrada la infroamcion dependiendo de lo que solicita el usuario*/
+    despues le paso el resultado obtenido del callback optenido de .map el cual tiene la informaicon de los jugadores en u
+    estructura html  */
         playerCards.innerHTML += arr
         .map(({name,position,number,isCaptain,nickname})=>
             `<div class="player-card">
